@@ -1,0 +1,584 @@
+{
+  "problems": [
+    {
+      "id": "qp-01", "source": "quant_prof", "difficulty": "medium",
+      "title": "Dice Sum Prime",
+      "problem": "Roll two fair six-sided dice. What is the probability that their sum is prime?",
+      "hint": "List all prime sums possible: 2, 3, 5, 7, 11. Count ordered pairs.",
+      "solution": "Primes: sum=2 (1 way), 3 (2), 5 (4), 7 (6), 11 (2) — total 15 out of 36. $P = \\frac{15}{36} = \\frac{5}{12}$.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["probability"]
+    },
+    {
+      "id": "qp-02", "source": "quant_prof", "difficulty": "medium",
+      "title": "Consecutive Heads",
+      "problem": "What is the expected number of flips of a fair coin until you see two consecutive heads?",
+      "hint": "Set up a Markov chain: state S (start), state A (last was H).",
+      "solution": "Let $e_S$, $e_A$ be expected flips from each state. $e_S = 1 + \\frac{1}{2}e_A + \\frac{1}{2}e_S$ and $e_A = 1 + \\frac{1}{2}e_S$. Solving gives $e_S = \\mathbf{6}$.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["probability", "expected value"]
+    },
+    {
+      "id": "qp-03", "source": "quant_prof", "difficulty": "medium",
+      "title": "Bayesian Coins",
+      "problem": "A bag has 9 fair coins and 1 two-headed coin. Pick one at random and flip it 3 times — all heads. What is the probability you picked the two-headed coin?",
+      "hint": "Apply Bayes' theorem.",
+      "solution": "$P = \\frac{1 \\cdot \\frac{1}{10}}{1 \\cdot \\frac{1}{10} + \\frac{1}{8} \\cdot \\frac{9}{10}} = \\frac{8}{17}$.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["probability", "bayes"]
+    },
+    {
+      "id": "qp-04", "source": "quant_prof", "difficulty": "easy",
+      "title": "Geometric Waiting Time",
+      "problem": "Roll a fair die repeatedly until you roll a 6. What is the expected number of rolls?",
+      "hint": "Geometric distribution with $p = 1/6$.",
+      "solution": "$\\mathbb{E}[X] = \\frac{1}{p} = \\mathbf{6}$.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["probability", "geometric distribution"]
+    },
+    {
+      "id": "qp-05", "source": "quant_prof", "difficulty": "medium",
+      "title": "Meeting Problem",
+      "problem": "Alice and Bob each arrive uniformly in [1 PM, 2 PM] and each waits 15 minutes. What is the probability they meet?",
+      "hint": "Shade the region $|a-b| \\le 15$ in a $60 \\times 60$ square.",
+      "solution": "Region they miss: two triangles with legs 45. $P(\\text{miss}) = \\frac{45^2}{60^2} = \\frac{9}{16}$. $P(\\text{meet}) = \\frac{7}{16}$.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["probability", "geometric probability"]
+    },
+    {
+      "id": "qp-06", "source": "quant_prof", "difficulty": "easy",
+      "title": "Fixed Points",
+      "problem": "A uniformly random permutation of $\\{1,\\ldots,n\\}$ is chosen. What is the expected number of fixed points?",
+      "hint": "Use linearity of expectation with indicator variables $X_i = \\mathbf{1}[\\sigma(i)=i]$.",
+      "solution": "$P(X_i=1) = \\frac{1}{n}$, so $\\mathbb{E}[\\sum X_i] = n \\cdot \\frac{1}{n} = \\mathbf{1}$ for all $n$.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["probability", "linearity of expectation"]
+    },
+    {
+      "id": "qp-07", "source": "quant_prof", "difficulty": "medium",
+      "title": "Kelly Criterion",
+      "problem": "A coin wins \\$1 with probability $p=0.6$ and loses \\$1 with probability $0.4$. What fraction of bankroll does the Kelly criterion say to bet?",
+      "hint": "Kelly fraction: $f^* = p - q$ for even-money bets.",
+      "solution": "$f^* = 0.6 - 0.4 = \\mathbf{0.2}$. Bet 20% of your bankroll.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["probability", "finance"]
+    },
+    {
+      "id": "qp-08", "source": "quant_prof", "difficulty": "easy",
+      "title": "Conditional Heads",
+      "problem": "Three fair coins are flipped. Given at least two are heads, what is the probability all three are heads?",
+      "hint": "Use $P(A|B) = P(A\\cap B)/P(B)$.",
+      "solution": "$P(\\text{HHH}) = 1/8$; $P(\\ge 2H) = 4/8$. Conditional probability $= \\frac{1/8}{4/8} = \\frac{1}{4}$.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["probability", "conditional"]
+    },
+    {
+      "id": "qp-09", "source": "quant_prof", "difficulty": "medium",
+      "title": "Coupon Collector (n=5)",
+      "problem": "A box of cereal contains one of 5 equally likely distinct coupons. How many boxes must you buy on average to collect all 5?",
+      "hint": "Expected waits: $5, 5/2, 5/3, 5/4, 5/5$.",
+      "solution": "$\\mathbb{E}[T] = 5(1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{5}) = \\frac{137}{12} \\approx 11.42$.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["probability", "expected value"]
+    },
+    {
+      "id": "qp-10", "source": "quant_prof", "difficulty": "easy",
+      "title": "Die Variance",
+      "problem": "Find the variance of a single fair six-sided die roll.",
+      "hint": "$\\operatorname{Var}(X) = \\mathbb{E}[X^2] - (\\mathbb{E}[X])^2$.",
+      "solution": "$\\mathbb{E}[X]=3.5$, $\\mathbb{E}[X^2]=91/6$. $\\operatorname{Var}(X) = 91/6 - 49/4 = \\mathbf{35/12}$.",
+      "url": "https://www.youtube.com/@Quant_Prof", "tags": ["statistics", "variance"]
+    },
+    {
+      "id": "sm-01", "source": "simon_marais", "difficulty": "hard",
+      "title": "Perfect Square Polynomial",
+      "problem": "Find all positive integers $n$ such that $n^2 + 3n + 5$ is a perfect square.",
+      "hint": "For $n\\ge 2$, show $n^2+3n+5$ lies strictly between $(n+1)^2$ and $(n+2)^2$.",
+      "solution": "For $n\\ge 2$: $(n+1)^2 < n^2+3n+5 < (n+2)^2$, so no square is possible. For $n=1$: $9=3^2$. ✓ Answer: $n=1$ only.",
+      "url": "https://www.simonmarais.org/", "tags": ["number theory", "perfect squares"]
+    },
+    {
+      "id": "sm-02", "source": "simon_marais", "difficulty": "easy",
+      "title": "Telescoping Series",
+      "problem": "Compute $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{1}{n(n+2)}$.",
+      "hint": "Partial fractions: $\\frac{1}{n(n+2)} = \\frac{1}{2}\\left(\\frac{1}{n}-\\frac{1}{n+2}\\right)$.",
+      "solution": "$\\frac{1}{2}(1 + \\frac{1}{2}) = \\frac{3}{4}$.",
+      "url": "https://www.simonmarais.org/", "tags": ["series", "telescoping"]
+    },
+    {
+      "id": "sm-03", "source": "simon_marais", "difficulty": "medium",
+      "title": "Domino Tilings",
+      "problem": "Let $T(n)$ be the number of ways to tile a $2\\times n$ grid with $1\\times 2$ dominoes. Find a closed form.",
+      "hint": "Derive the recurrence $T(n)=T(n-1)+T(n-2)$.",
+      "solution": "$T(1)=1, T(2)=2$, and $T(n)=T(n-1)+T(n-2)$ (Fibonacci). Thus $T(n) = F_{n+1}$.",
+      "url": "https://www.simonmarais.org/", "tags": ["combinatorics", "fibonacci"]
+    },
+    {
+      "id": "sm-04", "source": "simon_marais", "difficulty": "medium",
+      "title": "Squares mod 24",
+      "problem": "Prove that for any prime $p > 3$: $p^2 \\equiv 1 \\pmod{24}$.",
+      "hint": "Show $p^2\\equiv 1\\pmod 8$ and $p^2\\equiv 1\\pmod 3$, then use CRT.",
+      "solution": "$p$ odd $\\Rightarrow$ $p^2\\equiv 1\\pmod 8$. $3\\nmid p$ $\\Rightarrow$ $p^2\\equiv 1\\pmod 3$. By CRT: $p^2\\equiv 1\\pmod{24}$.",
+      "url": "https://www.simonmarais.org/", "tags": ["number theory", "modular arithmetic"]
+    },
+    {
+      "id": "sm-05", "source": "simon_marais", "difficulty": "hard",
+      "title": "Beta Integral",
+      "problem": "Evaluate $\\displaystyle\\int_0^1 x^m(1-x)^n\\,dx$ for non-negative integers $m,n$.",
+      "hint": "Recognise the Beta function $B(m+1,n+1)$.",
+      "solution": "$B(m+1,n+1) = \\dfrac{m!\\,n!}{(m+n+1)!}$.",
+      "url": "https://www.simonmarais.org/", "tags": ["calculus", "beta function"]
+    },
+    {
+      "id": "sm-06", "source": "simon_marais", "difficulty": "medium",
+      "title": "Idempotent Rank",
+      "problem": "Let $A$ be an $n\\times n$ real matrix with $A^2=A$. Show $\\operatorname{rank}(A)+\\operatorname{rank}(I-A)=n$.",
+      "hint": "Eigenvalues of an idempotent are 0 or 1.",
+      "solution": "$\\operatorname{rank}(A)=\\operatorname{tr}(A)$, $\\operatorname{rank}(I-A)=n-\\operatorname{tr}(A)$. Their sum is $n$.",
+      "url": "https://www.simonmarais.org/", "tags": ["linear algebra", "rank"]
+    },
+    {
+      "id": "sm-07", "source": "simon_marais", "difficulty": "hard",
+      "title": "Involution with Shift",
+      "problem": "Suppose $f:\\mathbb{R}\\to\\mathbb{R}$ satisfies $f(f(x))=x$, $f(x+1)=f(x)+1$, $f(0)=0$. Find $f(1/2)$.",
+      "hint": "Let $a=f(1/2)$. Use the shift rule to show $a=1/2+m$ for integer $m$, then substitute back.",
+      "solution": "From $f(f(1/2))=1/2$: $f(a)=1/2$. If $a=1/2+m$, the shift rule gives $f(a)=a+m=1/2+2m$. So $m=0$ and $f(1/2)=1/2$.",
+      "url": "https://www.simonmarais.org/", "tags": ["functional equations"]
+    },
+    {
+      "id": "sm-08", "source": "simon_marais", "difficulty": "medium",
+      "title": "Harmonic Bound",
+      "problem": "Prove that for all $n\\ge 2$: $\\displaystyle\\sum_{k=1}^n \\frac{1}{k^2} < 2 - \\frac{1}{n}$.",
+      "hint": "Use $\\frac{1}{k^2}<\\frac{1}{k-1}-\\frac{1}{k}$ for $k\\ge 2$.",
+      "solution": "Sum the bound from $k=2$ to $n$: $\\sum_{k=2}^n \\frac{1}{k^2} < 1-\\frac{1}{n}$. Adding $k=1$ term: total $< 2-\\frac{1}{n}$.",
+      "url": "https://www.simonmarais.org/", "tags": ["analysis", "inequalities"]
+    },
+    {
+      "id": "sm-09", "source": "simon_marais", "difficulty": "easy",
+      "title": "Committee Constraint",
+      "problem": "From 10 people including Alice and Bob, how many 3-person committees can be formed if Alice and Bob cannot both serve?",
+      "hint": "Subtract committees containing both from the total.",
+      "solution": "$\\binom{10}{3} - \\binom{8}{1} = 120 - 8 = \\mathbf{112}$.",
+      "url": "https://www.simonmarais.org/", "tags": ["combinatorics"]
+    },
+    {
+      "id": "sm-10", "source": "simon_marais", "difficulty": "hard",
+      "title": "Cauchy Functional Equation",
+      "problem": "A continuous $f:\\mathbb{R}\\to\\mathbb{R}$ satisfies $f(x+y)=f(x)+f(y)$ for all $x,y$. Prove $f(x)=cx$.",
+      "hint": "Establish $f(r)=cr$ for rationals first, then use continuity.",
+      "solution": "Set $c=f(1)$. By induction $f(n)=cn$ for integers, then $f(p/q)=cp/q$ for rationals. For any $x$, take rationals $r_n\\to x$; continuity gives $f(x)=cx$.",
+      "url": "https://www.simonmarais.org/", "tags": ["analysis", "functional equations"]
+    },
+    {
+      "id": "amt-01", "source": "amt", "difficulty": "easy",
+      "title": "Sum of Reciprocals",
+      "problem": "If $x + \\frac{1}{x} = 3$, find $x^2 + \\frac{1}{x^2}$.",
+      "hint": "Square the given equation.",
+      "solution": "$(x+\\frac{1}{x})^2 = x^2+2+\\frac{1}{x^2}=9$, so $x^2+\\frac{1}{x^2}=\\mathbf{7}$.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["algebra"]
+    },
+    {
+      "id": "amt-02", "source": "amt", "difficulty": "easy",
+      "title": "Integer Points on Circle",
+      "problem": "How many pairs of integers $(m,n)$ satisfy $m^2+n^2=100$?",
+      "hint": "Check which pairs of perfect squares sum to 100.",
+      "solution": "$(\\pm6,\\pm8),(\\pm8,\\pm6),(\\pm10,0),(0,\\pm10)$ — total $\\mathbf{12}$ pairs.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["number theory"]
+    },
+    {
+      "id": "amt-03", "source": "amt", "difficulty": "easy",
+      "title": "Arithmetic Sequence",
+      "problem": "In an arithmetic sequence, the 5th term is 17 and the 12th term is 38. Find the first term.",
+      "hint": "Write $a+4d=17$ and $a+11d=38$.",
+      "solution": "$7d=21\\Rightarrow d=3$, $a=17-12=\\mathbf{5}$.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["sequences"]
+    },
+    {
+      "id": "amt-04", "source": "amt", "difficulty": "easy",
+      "title": "Quartic via Substitution",
+      "problem": "Find all real solutions to $x^4 - 5x^2 + 4 = 0$.",
+      "hint": "Substitute $u=x^2$.",
+      "solution": "$u^2-5u+4=0\\Rightarrow u=1$ or $4$. So $x\\in\\{\\pm1,\\pm2\\}$.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["algebra", "polynomials"]
+    },
+    {
+      "id": "amt-05", "source": "amt", "difficulty": "medium",
+      "title": "Divisors of 2024",
+      "problem": "How many positive integer divisors does $2024$ have?",
+      "hint": "Prime factorise 2024 first.",
+      "solution": "$2024=2^3\\times11\\times23$. Divisors $=(3+1)(1+1)(1+1)=\\mathbf{16}$.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["number theory"]
+    },
+    {
+      "id": "amt-06", "source": "amt", "difficulty": "medium",
+      "title": "Last Two Digits",
+      "problem": "Find the last two digits of $7^{100}$.",
+      "hint": "Find the order of 7 modulo 100.",
+      "solution": "$7^4=2401\\equiv1\\pmod{100}$, so $7^{100}=(7^4)^{25}\\equiv1\\pmod{100}$. Last two digits: $\\mathbf{01}$.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["number theory", "modular arithmetic"]
+    },
+    {
+      "id": "amt-07", "source": "amt", "difficulty": "medium",
+      "title": "Polygon Diagonals",
+      "problem": "A convex $n$-gon has $d$ diagonals. For which $n$ does $d = 3n$?",
+      "hint": "$d = \\frac{n(n-3)}{2}$.",
+      "solution": "$\\frac{n(n-3)}{2}=3n\\Rightarrow n-3=6\\Rightarrow n=\\mathbf{9}$. A nonagon has 27 diagonals.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["geometry", "combinatorics"]
+    },
+    {
+      "id": "amt-08", "source": "amt", "difficulty": "medium",
+      "title": "Sum of 3-Digit Multiples of 9",
+      "problem": "Find the sum of all three-digit multiples of 9.",
+      "hint": "AP from 108 to 999.",
+      "solution": "100 terms: $\\frac{100}{2}(108+999)=50\\times1107=\\mathbf{55350}$.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["arithmetic"]
+    },
+    {
+      "id": "amt-09", "source": "amt", "difficulty": "hard",
+      "title": "Square vs Triangle Area",
+      "problem": "A square and an equilateral triangle have equal perimeters. Find the ratio of the square's area to the triangle's area.",
+      "hint": "Let the perimeter be $P$. Express areas in terms of $P$.",
+      "solution": "Square side $P/4$, triangle side $P/3$. Ratio $= \\frac{(P/4)^2}{\\frac{\\sqrt{3}}{4}(P/3)^2} = \\frac{9}{4\\sqrt{3}} = \\frac{3\\sqrt{3}}{4}$.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["geometry"]
+    },
+    {
+      "id": "amt-10", "source": "amt", "difficulty": "medium",
+      "title": "Consecutive Even Sum",
+      "problem": "The sum of three consecutive even integers is 78. What is the largest?",
+      "hint": "Let the integers be $n, n+2, n+4$.",
+      "solution": "$3n+6=78\\Rightarrow n=24$. Largest $= 24+4=\\mathbf{28}$.",
+      "url": "https://amt.edu.au/department/past-papers", "tags": ["algebra"]
+    },
+    {
+      "id": "aops-01", "source": "aops", "difficulty": "easy",
+      "title": "Telescoping Sum",
+      "problem": "Prove $\\displaystyle\\sum_{k=1}^{n}\\frac{1}{k(k+1)}=\\frac{n}{n+1}$.",
+      "hint": "Partial fractions.",
+      "solution": "$\\sum_{k=1}^n\\left(\\frac{1}{k}-\\frac{1}{k+1}\\right)=1-\\frac{1}{n+1}=\\frac{n}{n+1}$.",
+      "url": "https://artofproblemsolving.com/wiki/index.php/Category:Math_Contest_Problems", "tags": ["series", "induction"]
+    },
+    {
+      "id": "aops-02", "source": "aops", "difficulty": "medium",
+      "title": "Divisible by 3 or 5",
+      "problem": "Find the sum of all positive integers less than 1000 divisible by 3 or 5.",
+      "hint": "Inclusion-exclusion.",
+      "solution": "$166833+99500-33165=\\mathbf{233168}$.",
+      "url": "https://artofproblemsolving.com/wiki/index.php/Category:Math_Contest_Problems", "tags": ["number theory"]
+    },
+    {
+      "id": "aops-03", "source": "aops", "difficulty": "medium",
+      "title": "Centroid Ratios",
+      "problem": "In $\\triangle ABC$, medians $AD$ and $BE$ meet at centroid $G$. If $AG=4$ and $BG=5$, find $GD$ and $GE$.",
+      "hint": "The centroid divides each median $2:1$ from the vertex.",
+      "solution": "$GD = AG/2 = \\mathbf{2}$; $GE = BG/2 = \\mathbf{5/2}$.",
+      "url": "https://artofproblemsolving.com/wiki/index.php/Category:Math_Contest_Problems", "tags": ["geometry", "triangles"]
+    },
+    {
+      "id": "aops-04", "source": "aops", "difficulty": "medium",
+      "title": "Functional Equation Quadratic",
+      "problem": "Find all functions $f:\\mathbb{R}\\to\\mathbb{R}$ satisfying $f(x+y)=f(x)+f(y)+xy$ for all $x,y$.",
+      "hint": "Let $g(x)=f(x)-x^2/2$ and show $g$ is additive.",
+      "solution": "$g(x)=f(x)-x^2/2$ satisfies Cauchy's equation, so $g(x)=cx$. Hence $f(x)=\\frac{x^2}{2}+cx$.",
+      "url": "https://artofproblemsolving.com/wiki/index.php/Category:Math_Contest_Problems", "tags": ["functional equations"]
+    },
+    {
+      "id": "aops-05", "source": "aops", "difficulty": "medium",
+      "title": "MISSISSIPPI Arrangements",
+      "problem": "How many distinct arrangements are there of the letters of MISSISSIPPI?",
+      "hint": "Divide $11!$ by the factorials of the repeated letter counts.",
+      "solution": "M(1), I(4), S(4), P(2). Total $= \\frac{11!}{4!\\,4!\\,2!} = \\mathbf{34650}$.",
+      "url": "https://artofproblemsolving.com/wiki/index.php/Category:Math_Contest_Problems", "tags": ["combinatorics", "permutations"]
+    },
+    {
+      "id": "aops-06", "source": "aops", "difficulty": "medium",
+      "title": "Cube Sum Identity",
+      "problem": "If $a+b+c=0$, prove $a^3+b^3+c^3=3abc$.",
+      "hint": "Use the factorisation $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$.",
+      "solution": "Since $a+b+c=0$, the right factor makes the whole expression zero, so $a^3+b^3+c^3=3abc$.",
+      "url": "https://artofproblemsolving.com/wiki/index.php/Category:Math_Contest_Problems", "tags": ["algebra", "identities"]
+    },
+    {
+      "id": "aops-07", "source": "aops", "difficulty": "easy",
+      "title": "Sum of Squares Bound",
+      "problem": "Show $1+\\frac{1}{4}+\\frac{1}{9}+\\cdots+\\frac{1}{n^2} < 2$ for all $n\\ge 1$.",
+      "hint": "Bound $\\frac{1}{k^2}\\le \\frac{1}{k-1}-\\frac{1}{k}$ for $k\\ge2$.",
+      "solution": "For $k\\ge2$: $\\frac{1}{k^2}<\\frac{1}{k(k-1)}=\\frac{1}{k-1}-\\frac{1}{k}$. Summing from 2 to $n$ and adding the $k=1$ term: total $<1+(1-\\frac{1}{n})<2$.",
+      "url": "https://artofproblemsolving.com/wiki/index.php/Category:Math_Contest_Problems", "tags": ["analysis", "inequalities"]
+    },
+    {
+      "id": "aops-08", "source": "aops", "difficulty": "hard",
+      "title": "AM-GM Application",
+      "problem": "For positive reals $a,b,c$ with $abc=1$, prove $a+b+c \\ge a^{-1}+b^{-1}+c^{-1}$... actually, prove $\\frac{a}{b}+\\frac{b}{c}+\\frac{c}{a}\\ge a+b+c$ when $abc=1$.",
+      "hint": "Apply AM-GM to groups of three terms.",
+      "solution": "By AM-GM: $\\frac{a}{b}+\\frac{b}{c}+\\frac{c}{a}\\ge 3\\sqrt[3]{\\frac{abc}{abc}}=3$ and also $a+b+c\\ge3\\sqrt[3]{abc}=3$. For the direct inequality, note $\\sum\\frac{a}{b}-\\sum a = \\sum a(\\frac{1}{b}-1)$; use $abc=1$ and AM-GM on each triple to conclude.",
+      "url": "https://artofproblemsolving.com/wiki/index.php/Category:Math_Contest_Problems", "tags": ["inequalities", "AM-GM"]
+    },
+    {
+      "id": "aops-09", "source": "aops", "difficulty": "medium",
+      "title": "Number of Divisors Sum",
+      "problem": "Let $d(n)$ denote the number of positive divisors of $n$. Compute $\\sum_{k=1}^{100} d(k)$.",
+      "hint": "Count the number of pairs $(k,d)$ with $d\\mid k$ and $1\\le k\\le100$.",
+      "solution": "Each divisor $d$ contributes $\\lfloor 100/d \\rfloor$ to the sum. $\\sum_{d=1}^{100}\\lfloor100/d\\rfloor = 100+50+33+25+20+16+14+12+11+10+\\cdots = \\mathbf{482}$.",
+      "url": "https://artofproblemsolving.com/wiki/index.php/Category:Math_Contest_Problems", "tags": ["number theory", "divisors"]
+    },
+    {
+      "id": "aops-10", "source": "aops", "difficulty": "hard",
+      "title": "Vieta Jumping",
+      "problem": "Find all pairs of positive integers $(a,b)$ such that $\\frac{a^2+b^2}{ab+1}$ is a perfect square. (IMO 1988 Q6)",
+      "hint": "Fix the value $k=\\frac{a^2+b^2}{ab+1}$ and use Vieta jumping to derive a contradiction unless $k$ is a perfect square.",
+      "solution": "Assume $k$ is not a perfect square and fix the minimal positive solution $(a,b)$ for that $k$. By Vieta jumping on $x^2-kbx+(b^2-k)=0$, one finds another non-negative integer solution smaller than $a$, contradicting minimality. Hence $k$ must be a perfect square, and all solutions have $k=t^2$ with $(a,b)=(t,0)$ or $(t^3,t)$ (and permutations).",
+      "url": "https://artofproblemsolving.com/wiki/index.php/1988_IMO_Problems/Problem_6", "tags": ["number theory", "IMO", "Vieta jumping"]
+    },
+    {
+      "id": "apsmo-01", "source": "apsmo", "difficulty": "easy",
+      "title": "Average Added",
+      "problem": "The average of five numbers is 8. When a sixth number is added, the average becomes 9. What is the sixth number?",
+      "hint": "Find the sum before and after.",
+      "solution": "Original sum $=40$. New sum $=54$. Sixth number $=54-40=\\mathbf{14}$.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["arithmetic", "averages"]
+    },
+    {
+      "id": "apsmo-02", "source": "apsmo", "difficulty": "easy",
+      "title": "Marble Ratio",
+      "problem": "A bag has red, blue, and green marbles in ratio $3:2:1$. If there are 12 red marbles, how many marbles are in total?",
+      "hint": "The total is $12 \\times \\frac{3+2+1}{3}$.",
+      "solution": "Total $= 12 \\times \\frac{6}{3} = \\mathbf{24}$.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["ratios"]
+    },
+    {
+      "id": "apsmo-03", "source": "apsmo", "difficulty": "easy",
+      "title": "Rectangle Dimensions",
+      "problem": "A rectangle has perimeter 36 cm and area 80 cm². What are its dimensions?",
+      "hint": "Set up $l+w=18$ and $lw=80$.",
+      "solution": "Solve $x^2-18x+80=0$: $x=(18\\pm2)/2$. Dimensions: $\\mathbf{8}$ cm $\\times$ $\\mathbf{10}$ cm.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["geometry", "algebra"]
+    },
+    {
+      "id": "apsmo-04", "source": "apsmo", "difficulty": "easy",
+      "title": "Choosing Books",
+      "problem": "How many ways can you choose 2 books from a shelf of 7 different books?",
+      "hint": "Use combinations.",
+      "solution": "$\\binom{7}{2} = \\mathbf{21}$.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["combinatorics"]
+    },
+    {
+      "id": "apsmo-05", "source": "apsmo", "difficulty": "easy",
+      "title": "Neither Sport",
+      "problem": "In a class of 30 students: 18 play soccer, 14 play basketball, 5 play both. How many play neither?",
+      "hint": "Use inclusion-exclusion.",
+      "solution": "$|S\\cup B|=18+14-5=27$. Neither $=30-27=\\mathbf{3}$.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["sets", "inclusion-exclusion"]
+    },
+    {
+      "id": "apsmo-06", "source": "apsmo", "difficulty": "easy",
+      "title": "Clock Angle",
+      "problem": "What is the angle between the clock hands at 3:15?",
+      "hint": "Hour hand moves 0.5° per minute.",
+      "solution": "Minute hand at 90°. Hour hand at $3\\times30+15\\times0.5=97.5°$. Angle $=|97.5-90|=\\mathbf{7.5°}$.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["geometry", "clocks"]
+    },
+    {
+      "id": "apsmo-07", "source": "apsmo", "difficulty": "easy",
+      "title": "Smallest Prime After 50",
+      "problem": "What is the smallest prime number greater than 50?",
+      "hint": "Check 51, 52, 53 for primality.",
+      "solution": "$51=3\\times17$, $52=4\\times13$, $53$ is prime. Answer: $\\mathbf{53}$.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["number theory", "primes"]
+    },
+    {
+      "id": "apsmo-08", "source": "apsmo", "difficulty": "medium",
+      "title": "Linear Equation",
+      "problem": "Find $x$: $\\dfrac{x-3}{4} = \\dfrac{x+1}{6}$.",
+      "hint": "Cross multiply.",
+      "solution": "$6(x-3)=4(x+1)\\Rightarrow 6x-18=4x+4\\Rightarrow 2x=22\\Rightarrow x=\\mathbf{11}$.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["algebra"]
+    },
+    {
+      "id": "apsmo-09", "source": "apsmo", "difficulty": "medium",
+      "title": "Train Distance",
+      "problem": "A train travels at 60 km/h for 2.5 hours, then at 90 km/h for 1.5 hours. What is the total distance?",
+      "hint": "Distance = speed × time for each leg.",
+      "solution": "$60\\times2.5 + 90\\times1.5 = 150+135 = \\mathbf{285}$ km.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["arithmetic"]
+    },
+    {
+      "id": "apsmo-10", "source": "apsmo", "difficulty": "medium",
+      "title": "Pattern Sum",
+      "problem": "What is $1-2+3-4+5-6+\\cdots-100$?",
+      "hint": "Pair consecutive terms: $(1-2)+(3-4)+\\cdots$",
+      "solution": "50 pairs each equal to $-1$: total $= 50\\times(-1) = \\mathbf{-50}$.",
+      "url": "https://apsmo.edu.au/maths-resources/sample-questions/", "tags": ["arithmetic", "series"]
+    },
+    {
+      "id": "gt-01", "source": "graph_theory", "difficulty": "hard",
+      "title": "IMO 2007 P3 — Clique Rooms",
+      "problem": "In a mathematical competition some competitors are friends. Friendship is always mutual. Call a group of competitors a clique if each two of them are friends. The number of members of a clique is called its size. Given that the largest clique size is even, prove that the competitors can be arranged in two rooms such that the largest clique size in one room equals the largest clique size in the other room.",
+      "hint": "Take a maximum clique of size $2k$; split it evenly between the two rooms, then assign all other competitors arbitrarily.",
+      "solution": "Let the largest clique have size $2k$; fix one such clique $C$ and place $k$ members in Room 1 and $k$ in Room 2. For any competitor $x\\notin C$ assign $x$ to either room. Each room contains a clique of size $k$, so maximum $\\geq k$. If some room had a clique $Q$ of size $>k$, then $Q$ together with the $k$ members of $C$ in the other room would form a clique of size $>2k$, contradicting maximality. Hence both rooms have maximum clique size exactly $k$. $\\blacksquare$",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2007_IMO_Problems/Problem_3",
+      "tags": ["graph theory", "cliques", "IMO"]
+    },
+    {
+      "id": "gt-02", "source": "graph_theory", "difficulty": "hard",
+      "title": "IMO 2019 P3 — Social Network",
+      "problem": "A social network has $2019$ users. Whenever $A$ is friends with $B$, $B$ is friends with $A$. An event: choose $A,B,C$ where $A$ is friends with both $B$ and $C$ but $B,C$ are not friends; then $B,C$ become friends while $A$ loses both friendships. Initially $1010$ users have $1009$ friends each and $1009$ users have $1010$ friends each. Prove there is a sequence of events after which every user has at most one friend.",
+      "hint": "Show connectivity is preserved and edge count strictly decreases each step; deduce the process terminates as a forest.",
+      "solution": "Connectivity is preserved by each event (the two new friends stay reachable). Edge count strictly decreases, so the process terminates. At termination no vertex has two non-adjacent neighbours, so the graph is a forest. A connected forest is a tree; combined with the degree-sum parity argument the final graph is a near-perfect matching, giving every user at most one friend. $\\blacksquare$",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2019_IMO_Problems/Problem_3",
+      "tags": ["graph theory", "invariants", "IMO"]
+    },
+    {
+      "id": "gt-03", "source": "graph_theory", "difficulty": "hard",
+      "title": "IMO 2005 P6 — Competition Problems",
+      "problem": "In a mathematical competition $6$ problems were posed. Each pair of problems was solved by more than $\\tfrac{2}{5}$ of the contestants. No contestant solved all $6$ problems. Prove that at least $2$ contestants each solved exactly $5$ problems.",
+      "hint": "Double-count (contestant, problem) incidences and use the pairwise condition to bound the total number of problems solved.",
+      "solution": "Let $n$ be the number of contestants and $s_i$ the number solving problem $i$. For each pair $\\{i,j\\}$ more than $2n/5$ contestants solved both, so summing over all $15$ pairs gives $\\sum_{i<j}|S_i\\cap S_j|>6n$. But $\\sum_{i<j}|S_i\\cap S_j|=\\frac{1}{2}\\bigl(\\sum_c\\binom{p_c}{2}\\cdot 2\\bigr)$ where $p_c$ is the number solved by contestant $c$. Since $p_c\\leq 5$, careful analysis forces at least two contestants with $p_c=5$. $\\blacksquare$",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2005_IMO_Problems/Problem_6",
+      "tags": ["graph theory", "double counting", "IMO"]
+    },
+    {
+      "id": "gt-04", "source": "graph_theory", "difficulty": "hard",
+      "title": "ISL 2001 C3 — Cliques at a Party",
+      "problem": "Define a $k$-clique as a set of $k$ mutually acquainted people. At a party every pair of $3$-cliques shares at least one person, and there are no $5$-cliques. Prove that at most $2$ people need to leave for no $3$-clique to remain.",
+      "hint": "The intersection condition implies all triangles share a common vertex, or two vertices cover all triangles.",
+      "solution": "Suppose no single vertex meets every triangle. Pick two triangles $T_1,T_2$ sharing only vertex $u$; every other triangle must meet both $T_1$ and $T_2$. The no-$5$-clique condition forces any third triangle to contain $u$ or to share vertices with both $T_1\\setminus\\{u\\}$ and $T_2\\setminus\\{u\\}$. A careful case analysis shows a second vertex $w$ covers all remaining triangles. Thus $\\{u,w\\}$ is the required set of at most $2$ people. $\\blacksquare$",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2001_IMO_Shortlist_Problems/C3",
+      "tags": ["graph theory", "cliques", "ISL"]
+    },
+    {
+      "id": "gt-05", "source": "graph_theory", "difficulty": "hard",
+      "title": "ISL 2004 C3 — 4-Cycle Edge Deletion",
+      "problem": "Allowed operation: choose a $4$-cycle in a finite graph and delete one of its edges. Starting from $K_n$, find the minimum number of edges obtainable by repeated operations.",
+      "hint": "Show the graph always stays connected and always contains an odd cycle; deduce it cannot become a tree.",
+      "solution": "Connectivity is preserved: a deleted edge lay in a $4$-cycle so its endpoints remain connected. An odd cycle always exists: $K_n$ has triangles; deleting an edge from a $4$-cycle preserves the parity of any disjoint odd cycle. Hence the graph is always connected with an odd cycle, so it has $\\geq n$ edges. A construction (peel vertices inductively) achieves exactly $n$ edges. Answer: $n$. $\\blacksquare$",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2004_IMO_Shortlist_Problems/C3",
+      "tags": ["graph theory", "extremal", "ISL"]
+    },
+    {
+      "id": "gt-06", "source": "graph_theory", "difficulty": "medium",
+      "title": "Tournament Hamiltonian Path",
+      "problem": "A tournament is a complete directed graph (each pair of vertices joined by exactly one directed edge). Prove every tournament has a directed Hamiltonian path — a directed path visiting every vertex exactly once.",
+      "hint": "Induction on $n$: given a Hamiltonian path on $n-1$ vertices, insert the new vertex at the right place.",
+      "solution": "Induct on $n$. For $n=1$ trivial. Given a Hamiltonian path $v_1\\to\\cdots\\to v_{n-1}$ and new vertex $v$: if $v\\to v_1$, prepend. If $v_{n-1}\\to v$, append. Otherwise find the first $i$ with $v_i\\to v$ and $v\\to v_{i+1}$; insert $v$ between them. Such $i$ exists by the intermediate-value property on the sequence of edge directions. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Tournament_(graph_theory)",
+      "tags": ["graph theory", "tournaments", "Hamiltonian"]
+    },
+    {
+      "id": "gt-07", "source": "graph_theory", "difficulty": "medium",
+      "title": "King in a Tournament",
+      "problem": "In a tournament, a player is a king if they beat every other player either directly or via one intermediate player. Prove the player with the most wins is always a king.",
+      "hint": "If the top scorer $v$ cannot reach $u$ in $\\leq 2$ steps, show $u$ has strictly more wins than $v$.",
+      "solution": "Let $v$ have the maximum number of wins. Suppose $u$ beats $v$ and $v$ cannot reach $u$ in $2$ steps. Then every player $w$ beaten by $v$ must also lose to $u$ (otherwise $v\\to w\\to u$ is a 2-step path). So all of $v$'s wins are also $u$'s wins, and $u$ additionally beats $v$, giving $u$ strictly more wins — contradicting maximality. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/King_(graph_theory)",
+      "tags": ["graph theory", "tournaments", "domination"]
+    },
+    {
+      "id": "gt-08", "source": "graph_theory", "difficulty": "medium",
+      "title": "Mantel's Theorem",
+      "problem": "Prove that a graph on $n$ vertices with no triangle has at most $\\lfloor n^2/4\\rfloor$ edges, achieved uniquely by $K_{\\lfloor n/2\\rfloor,\\lceil n/2\\rceil}$.",
+      "hint": "For any edge $\\{u,v\\}$, the triangle-free condition forces $N(u)\\cap N(v)=\\emptyset$; use this to bound $\\deg u+\\deg v$.",
+      "solution": "For every edge $\\{u,v\\}$, triangle-freeness gives $N(u)\\cap N(v)=\\emptyset$, so $\\deg u+\\deg v\\leq n$. Summing over all $|E|$ edges: $\\sum_{\\{u,v\\}\\in E}(\\deg u+\\deg v)\\leq n|E|$. The left side equals $\\sum_v\\deg(v)^2\\geq (2|E|)^2/n$ by Cauchy–Schwarz. Hence $|E|\\leq n^2/4$. The balanced complete bipartite graph achieves equality. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Mantel%27s_theorem",
+      "tags": ["graph theory", "extremal", "triangle-free"]
+    },
+    {
+      "id": "gt-09", "source": "graph_theory", "difficulty": "hard",
+      "title": "Friendship Theorem",
+      "problem": "In a graph $G$ where every pair of vertices has exactly one common neighbour, prove there is a vertex adjacent to all others.",
+      "hint": "Assume no hub exists; show $G$ must be regular, then derive a contradiction via counting paths of length $2$.",
+      "solution": "Assume no vertex is universal. The unique-common-neighbour condition forces regularity (degree $k$). Counting length-$2$ paths: $k(k-1)=n-1$, so $n=k^2-k+1$. The adjacency matrix satisfies $A^2=(k-1)I+J$, giving eigenvalues $k^2$ and $k-1$. Integrality of the multiplicity $(n-1)$ forces $k=2$, so $n=3$ and $G=K_3$, which does have a universal vertex — contradiction. Hence a hub always exists. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Friendship_theorem",
+      "tags": ["graph theory", "spectral", "friendship theorem"]
+    },
+    {
+      "id": "gt-10", "source": "graph_theory", "difficulty": "medium",
+      "title": "ISL 2005 C1 — Lamps and Rooms",
+      "problem": "A house has an even number of lamps distributed among rooms (at least $3$ per room). Each lamp shares a switch with exactly one other lamp; toggling a switch changes both lamps' states. Prove that for any initial configuration there is a sequence of toggles after which every room contains both on-lamps and off-lamps.",
+      "hint": "Model paired lamps as a perfect matching; show you can reduce the count of monochromatic rooms by $1$ at each stage.",
+      "solution": "Model lamps as vertices and shared switches as a perfect matching $M$. Start in a monochromatic room $R$. Toggle a switch from $R$; either the adjacent room becomes dichromatic (reducing monochromatic count), or we follow a path in $M$ until we revisit a room. When we revisit, two distinct lamps in that room have been toggled while a third was not, making it dichromatic. Repeat until no monochromatic rooms remain. $\\blacksquare$",
+      "url": "https://artofproblemsolving.com/wiki/index.php/2005_IMO_Shortlist_Problems/C1",
+      "tags": ["graph theory", "matching", "ISL"]
+    },
+    {
+      "id": "gt-11", "source": "graph_theory", "difficulty": "medium",
+      "title": "Ramsey R(3,3) = 6",
+      "problem": "Prove $R(3,3)=6$: every $2$-colouring of $K_6$'s edges contains a monochromatic triangle, yet some $2$-colouring of $K_5$ does not.",
+      "hint": "Fix any vertex of $K_6$ and apply pigeonhole to its $5$ edges.",
+      "solution": "Fix vertex $v$ in $K_6$; its $5$ edges use $2$ colours, so by pigeonhole $\\geq 3$ share one colour, say red, to vertices $a,b,c$. If $ab$, $bc$, or $ca$ is red we have a red triangle; otherwise $abc$ is blue. For $K_5$: colour $\\{i,j\\}$ red iff $i-j\\equiv\\pm1\\pmod5$; every triangle has at least one blue and one red edge. So $R(3,3)=6$. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Ramsey%27s_theorem",
+      "tags": ["graph theory", "Ramsey", "pigeonhole"]
+    },
+    {
+      "id": "gt-12", "source": "graph_theory", "difficulty": "medium",
+      "title": "Score Sequence of a Tournament",
+      "problem": "Prove that a non-decreasing sequence $(s_1\\leq\\cdots\\leq s_n)$ of non-negative integers is the score sequence of some tournament if and only if $\\sum_{i=1}^k s_i\\geq\\binom{k}{2}$ for all $1\\leq k\\leq n$, with equality at $k=n$.",
+      "hint": "Necessity: the $k$ players with lowest scores play $\\binom{k}{2}$ games among themselves. Sufficiency: induction on $n$.",
+      "solution": "Necessity: among any $k$ players, $\\binom{k}{2}$ games are played contributing total score $\\binom{k}{2}$ within the group, so each player's out-degree sums to at least $\\binom{k}{2}$. Sufficiency by induction: given a valid sequence, remove the player with score $s_n=n-1$ (beats all); the remaining sequence is valid for $n-1$ players by hypothesis, and reinserting the dominant player gives the original tournament. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Score_sequence",
+      "tags": ["graph theory", "tournaments", "score sequence"]
+    },
+    {
+      "id": "gt-13", "source": "graph_theory", "difficulty": "hard",
+      "title": "Turán's Theorem",
+      "problem": "Prove that the maximum number of edges in a $K_{r+1}$-free graph on $n$ vertices is achieved by the complete $r$-partite graph $T(n,r)$ with parts as equal as possible.",
+      "hint": "If some vertex has two non-adjacent neighbours in the same part, swapping can only increase edges; iterate to reach the Turán graph.",
+      "solution": "Among all $K_{r+1}$-free graphs on $n$ vertices maximising edges, pick one $G$. $G$ is complete $r$-partite: if two vertices in the same part have a non-adjacent pair elsewhere, one can re-balance to increase edges. The unique maximum $r$-partite graph is the balanced one $T(n,r)$ (verify by convexity of the edge count over part sizes). $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Tur%C3%A1n%27s_theorem",
+      "tags": ["graph theory", "extremal", "Turán"]
+    },
+    {
+      "id": "gt-14", "source": "graph_theory", "difficulty": "medium",
+      "title": "Dirac's Theorem",
+      "problem": "Prove that if $G$ is a simple graph on $n\\geq 3$ vertices with every vertex of degree $\\geq n/2$, then $G$ has a Hamiltonian cycle.",
+      "hint": "Take a longest path; show its endpoints must be joined by a cycle covering all vertices.",
+      "solution": "Take a longest path $v_1,v_2,\\ldots,v_k$. Since $k$ is maximal, all neighbours of $v_1$ and $v_k$ lie on the path. If $v_1$ is adjacent to $v_{i+1}$ and $v_k$ to $v_i$ for some $i$, the cycle $v_1\\to v_2\\to\\cdots\\to v_i\\to v_k\\to v_{k-1}\\to\\cdots\\to v_{i+1}\\to v_1$ exists; by degree $\\geq n/2$ such an $i$ always exists and $k=n$, giving a Hamiltonian cycle. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Dirac%27s_theorem_on_Hamiltonian_cycles",
+      "tags": ["graph theory", "Hamiltonian", "Dirac"]
+    },
+    {
+      "id": "gt-15", "source": "graph_theory", "difficulty": "hard",
+      "title": "Hall's Theorem via Graph Matching",
+      "problem": "Let $G=(A\\cup B,E)$ be a bipartite graph. Prove that $G$ has a matching saturating every vertex of $A$ if and only if for every $S\\subseteq A$, $|N(S)|\\geq|S|$ (Hall's condition).",
+      "hint": "Necessity is immediate. For sufficiency, induct on $|A|$: split into the case where Hall's condition holds with strict inequality everywhere (except $S=A$), versus a 'tight' set exists.",
+      "solution": "Necessity: a matching injects $S$ into $N(S)$. Sufficiency by induction on $|A|$. If all proper subsets $S\\subsetneq A$ satisfy $|N(S)|>|S|$, pick any edge $\\{a,b\\}$, match it, and apply induction to the remaining bipartite graph (Hall's condition is preserved). Otherwise a tight set $S$ with $|N(S)|=|S|$ exists; by induction $S$ has a matching to $N(S)$, and Hall's condition for $A\\setminus S$ (with $B\\setminus N(S)$) is verified, giving a matching for the rest. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem",
+      "tags": ["graph theory", "matching", "Hall"]
+    },
+    {
+      "id": "gt-16", "source": "graph_theory", "difficulty": "hard",
+      "title": "Zarankiewicz Problem — $K_{2,2}$-Free Graphs",
+      "problem": "Prove that a bipartite graph on $n+n$ vertices with no complete bipartite subgraph $K_{2,2}$ has at most $\\frac{1}{2}(1+\\sqrt{4n-3})\\,n$ edges. In particular, it has $O(n^{3/2})$ edges.",
+      "hint": "Count the number of 'cherries' (paths of length 2 with both ends in the same part) and use the $K_{2,2}$-free condition.",
+      "solution": "Let $G$ have parts $A,B$ each of size $n$ with $m$ edges. For each pair $\\{a,a'\\}\\subseteq A$, the $K_{2,2}$-free condition forces $|N(a)\\cap N(a')|\\leq 1$. Counting pairs sharing a common neighbour: $\\sum_{b\\in B}\\binom{\\deg b}{2}\\leq\\binom{n}{2}$. By convexity $\\sum_b\\binom{\\deg b}{2}\\geq n\\cdot\\binom{m/n}{2}$. This gives $m\\leq\\frac{1}{2}(1+\\sqrt{4n-3})\\,n=O(n^{3/2})$. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Zarankiewicz_problem",
+      "tags": ["graph theory", "extremal", "bipartite", "Zarankiewicz"]
+    },
+    {
+      "id": "gt-17", "source": "graph_theory", "difficulty": "hard",
+      "title": "Bondy–Simonovits Theorem (Even Cycles)",
+      "problem": "Let $G$ be a graph on $n$ vertices with more than $100\\,k\\,n^{1+1/k}$ edges (for a positive integer $k$). Prove that $G$ contains a cycle of every even length from $4$ to $2k$ (i.e., cycles $C_4, C_6,\\ldots, C_{2k}$).",
+      "hint": "Use the fact that a graph with many edges relative to $n$ must contain a short cycle; iterate to build longer even cycles.",
+      "solution": "By the Bondy–Simonovits theorem, for any bipartite graph $H$, any graph with $\\Omega(n^{1+1/k})$ edges contains a copy of $H$ when $H$ is the $k$-cycle $C_{2k}$. The key step is showing that high edge density forces a short even cycle via a BFS argument: a BFS tree of depth $k$ either finds a back-edge at every level (giving even cycles of lengths $4,6,\\ldots,2k$) or the tree itself witnesses the claimed density. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Forbidden_subgraph_problem",
+      "tags": ["graph theory", "extremal", "cycles", "Bondy-Simonovits"]
+    },
+    {
+      "id": "gt-18", "source": "graph_theory", "difficulty": "medium",
+      "title": "Ore's Theorem",
+      "problem": "Prove that if $G$ is a simple graph on $n\\geq 3$ vertices with $\\deg(u)+\\deg(v)\\geq n$ for every pair of non-adjacent vertices $u,v$, then $G$ has a Hamiltonian cycle.",
+      "hint": "Take a longest path and argue that the endpoints can be connected via the path to form a Hamiltonian cycle.",
+      "solution": "Take a longest path $P=v_1,\\ldots,v_k$. All neighbours of $v_1$ and $v_k$ lie on $P$. If $v_k$ is adjacent to $v_i$ and $v_1$ is adjacent to $v_{i+1}$ for some $i$, we get a Hamiltonian cycle on $P$'s vertices; the degree condition ensures such $i$ exists by pigeonhole ($\\deg v_1+\\deg v_k\\geq n=k$). Suppose $k<n$; then some vertex $w\\notin P$ is adjacent to a vertex on $P$, extending it — contradicting maximality. So $k=n$ and we have a Hamiltonian cycle. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Ore%27s_theorem",
+      "tags": ["graph theory", "Hamiltonian", "Ore"]
+    },
+    {
+      "id": "gt-19", "source": "graph_theory", "difficulty": "hard",
+      "title": "Menger's Theorem",
+      "problem": "Prove Menger's theorem: for vertices $s,t$ in a graph $G$ (with no edge $st$), the minimum number of vertices whose removal separates $s$ from $t$ equals the maximum number of internally vertex-disjoint $s$-$t$ paths.",
+      "hint": "Model as a flow problem: split each internal vertex $v$ into $v^{in}$ and $v^{out}$ with a unit-capacity edge; apply the max-flow min-cut theorem.",
+      "solution": "Replace each internal vertex $v$ by $v^{in}\\to v^{out}$ with capacity $1$; keep all original edges with infinite capacity. A flow of value $k$ corresponds to $k$ internally vertex-disjoint paths, and a cut of capacity $k$ in this network corresponds to a set of $k$ internal vertices separating $s$ from $t$. By the integer max-flow min-cut theorem (Ford–Fulkerson), the two values are equal. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Menger%27s_theorem",
+      "tags": ["graph theory", "connectivity", "flow", "Menger"]
+    },
+    {
+      "id": "gt-20", "source": "graph_theory", "difficulty": "hard",
+      "title": "Gallai–Roy Theorem",
+      "problem": "In any directed graph (digraph) $D$, let $P$ be the length of the longest directed path in $D$. Prove that the chromatic number of the underlying undirected graph satisfies $\\chi(G)\\leq P+1$. In particular, every tournament on $n$ vertices has a directed path of length $\\geq n-1$ (the Hamiltonian path result as a corollary).",
+      "hint": "Orient every edge of $G$ toward the higher colour class; check path lengths in the resulting DAG.",
+      "solution": "Given a proper $\\chi(G)$-colouring of $G$, orient each edge from the lower-coloured to the higher-coloured endpoint. The resulting DAG has no directed cycle, and any directed path visits vertices of strictly increasing colour, so its length is $\\leq \\chi(G)-1$, giving $P\\geq\\chi(G)-1$. Conversely, from any DAG acyclic orientation, assign each vertex the length of the longest directed path ending at it plus $1$; this yields a proper colouring using $\\leq P+1$ colours, so $\\chi(G)\\leq P+1$. $\\blacksquare$",
+      "url": "https://en.wikipedia.org/wiki/Gallai%E2%80%93Hasse%E2%80%93Roy%E2%80%93Vitaver_theorem",
+      "tags": ["graph theory", "colouring", "tournaments", "Gallai-Roy"]
+    }
+  ]
+}
